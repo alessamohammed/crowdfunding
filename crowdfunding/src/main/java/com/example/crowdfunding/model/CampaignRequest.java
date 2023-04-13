@@ -7,4 +7,5 @@ import lombok.Data;
 @Entity
 @Table(name = "campaign_requests")
 public class CampaignRequest extends Campaign {
+    private String status;
 }

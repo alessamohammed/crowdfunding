@@ -21,4 +21,7 @@ public class Student {
     private String year;
     private double gatScore;
     private double academicAchievementScore;
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private Country country;
 }

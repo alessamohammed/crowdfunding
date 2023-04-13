@@ -55,12 +55,20 @@ public class CampaignController {
         CampaignRequestRepo.deleteById(id);
     }
 
-    @PutMapping("/approve/{id}")
-    public Campaign approveCampaignRequest(@PathVariable("id") Integer id) {
+    @PutMapping("/disapprove/{id}")
+    public CampaignRequest disapproveCampaignRequest(@PathVariable("id") Integer id) {
         CampaignRequest campaignRequest = CampaignRequestRepo.findById(id).get();
-        Campaign campaign = campaignRequest;
-        CampaignRequestRepo.deleteById(id);
-        return CampaignRepo.save(campaign);
+        campaignRequest.setStatus("disapproved");
+        CampaignRequestRepo.save(campaignRequest);
+        return CampaignRequestRepo.save(campaignRequest);
+    }
+
+    @PutMapping("/approve/{id}")
+    public CampaignRequest approveCampaignRequest(@PathVariable("id") Integer id) {
+        CampaignRequest campaignRequest = CampaignRequestRepo.findById(id).get();
+        campaignRequest.setStatus("approved");
+        CampaignRequestRepo.save(campaignRequest);
+        return CampaignRequestRepo.save(campaignRequest);
     }
 
 }
