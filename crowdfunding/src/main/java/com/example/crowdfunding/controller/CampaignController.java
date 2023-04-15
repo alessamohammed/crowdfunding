@@ -4,9 +4,11 @@ import com.example.crowdfunding.model.Campaign;
 import com.example.crowdfunding.model.CampaignRequest;
 import com.example.crowdfunding.repository.CampaignRepo;
 import com.example.crowdfunding.repository.CampaignRequestRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/campaign")
 public class CampaignController {
@@ -14,10 +16,6 @@ public class CampaignController {
     private CampaignRepo CampaignRepo;
     private CampaignRequestRepo CampaignRequestRepo;
 
-    public CampaignController(CampaignRepo CampaignRepo, CampaignRequestRepo CampaignRequestRepo) {
-        this.CampaignRepo = CampaignRepo;
-        this.CampaignRequestRepo = CampaignRequestRepo;
-    }
 
     @GetMapping("/all")
     public Iterable<Campaign> getAllCampaigns() {
