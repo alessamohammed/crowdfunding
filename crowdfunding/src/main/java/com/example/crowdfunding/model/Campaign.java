@@ -19,4 +19,7 @@ public class Campaign {
     @ManyToOne
     @JoinColumn(name = "university_id")
     private University university;
+    private String status;
+    @Column(name = "image_url")
+    private String imageUrl;
 }
