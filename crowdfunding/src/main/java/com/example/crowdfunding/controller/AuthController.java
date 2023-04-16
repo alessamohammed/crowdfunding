@@ -24,7 +24,7 @@ public class AuthController {
     public ResponseEntity<UserDto> login(@RequestBody CredentialDto credentialDto) {
         UserDto user = userService.login(credentialDto);
 
-        user.setToken(userAuthProvider.createToken(user.getLogin()));
+        user.setToken(userAuthProvider.createToken(user.getEmail()));
         return ResponseEntity.ok(user);
     }
 
@@ -32,7 +32,7 @@ public class AuthController {
     public ResponseEntity<UserDto> register(@RequestBody SignUpDto signUpDto) {
         UserDto user = userService.register(signUpDto);
 
-        user.setToken(userAuthProvider.createToken(user.getLogin()));
+        user.setToken(userAuthProvider.createToken(user.getEmail()));
         return ResponseEntity
                 .created(URI.create("/users/"
                         + user.getId())).body(user);

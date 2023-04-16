@@ -30,7 +30,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers(HttpMethod.POST, "/login", "/register").permitAll()
                         .anyRequest().authenticated());
-//        http.csrf().disable().authorizeRequests().anyRequest().permitAll();
         return http.build();
     }
 }
